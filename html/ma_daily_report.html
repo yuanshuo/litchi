@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>我爱工作</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <link rel="stylesheet" href="https://7npmedia.w3cschool.cn/w3.css">
+    <link rel="stylesheet" href="./css/lucky.css">
+
+</head>
+
+<body>
+<div class="w3-container w3-black">
+    <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请开始你的工作汇报</font></font></h2>
+</div>
+
+<div class="w3-container w3-light-grey w3-text-brown">
+    <form class="w3-container">
+        <input class="w3-radio" type="radio" name="reportType" value="1">
+        <label>公司汇报</label>
+        <input class="w3-radio" type="radio" name="reportType" value="2">
+        <label>集团汇报</label>
+
+        <p></p>
+
+        <label>昨日汇报内容：</label>
+        <textarea class="w3-input" rows="10" id="old" placeholder="长按粘贴"></textarea>
+
+        <p></p>
+        <label class="w3-red">当日来电(组)：</label>
+        <input class="w3-input" type="text" id="laidian"/>
+
+        <label class="w3-red">当日来访(组)：</label>
+        <input class="w3-input" type="text" id="laifang"/>
+
+        <label>新访：</label>
+        <input class="w3-input" type="text" id="xinfang"/>
+
+        <label>自然来访：</label>
+        <input class="w3-input" type="text" id="ziran"/>
+
+        <label>[渠道]自渠来访：</label>
+        <input class="w3-input" type="text" id="ziqu"/>
+
+        <label>[渠道]中介来访：</label>
+        <input class="w3-input" type="text" id="zhongjie"/>
+
+        <label>再访：</label>
+        <input class="w3-input" type="text" id="zaifang"/>
+
+        <label>业主：</label>
+        <input class="w3-input" type="text" id="yezhu"/>
+
+        <label>参观：</label>
+        <input class="w3-input" type="text" id="canguan"/>
+
+        <label>意向合院：</label>
+        <input class="w3-input" type="text" id="heyuan"/>
+
+        <label>意向叠墅：</label>
+        <input class="w3-input" type="text" id="dieshu"/>
+
+        <label>意向洋房：</label>
+        <input class="w3-input" type="text" id="yangfang"/>
+
+        <label>意向其他：</label>
+        <input class="w3-input" type="text" id="qita"/>
+
+        <label class="w3-red">当日认购(套)：</label>
+        <input class="w3-input" type="text" id="rengou"/>
+
+        <label>认购金额(万)：</label>
+        <input class="w3-input" type="text" id="rengoujine" placeholder="支持+运算"/>
+
+        <label class="w3-red">当日合同(套)：</label>
+        <input class="w3-input" type="text" id="hetong"/>
+
+        <label>合同金额(万)：</label>
+        <input class="w3-input" type="text" id="hetongjine" placeholder="支持+运算"/>
+
+        <label class="w3-red">当日回款(万)：</label>
+        <input class="w3-input" type="text" id="huikuan" placeholder="支持+运算"/>
+
+        <button class="w3-button w3-black" type="button" onclick="report()">点我生成汇报内容</button>
+        <span id="lucky-tip" style="display: none" onclick="lucky();">端午抽大奖!!!</span>
+
+        <p></p>
+        <label>今日汇报内容：</label>
+        <textarea class="w3-input" rows="10" id="new" placeholder="点击全选复制"></textarea>
+
+        <div id="tip-model" class="w3-modal">
+            <div class="w3-modal-content">
+                <div class="w3-container">
+                    <span onclick="document.getElementById('tip-model').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <p class="w3-large" id="tip-content"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="id02" class="w3-modal">
+
+            <div class="ck-wheel">
+                <div class="wheel-tip w3-text-red"><h3 id="wheel-tip" >冲鸭！冲鸭！</h3></div>
+                <div class="wheel">
+                    <canvas class="item" id="wheelCanvas" width="844px" height="844px"></canvas>
+                </div>
+                <img class="pointer" src="./img/wheel-pointer.png" />
+                <span onclick="luckyClose();" class="w3-button w3-circle w3-text-black wheel-close">X</span>
+                <audio id="wheel-audio">
+                    <source src="./audio/seve_lucky.m4a" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+<div class="w3-container w3-dark-grey">
+    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">小马哥版权所有©2022-v6</font></font></p>
+</div>
+
+<script src="http://cdn.staticfile.org/moment.js/2.24.0/moment.min.js"></script>
+<script src="http://libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="./frame/jQueryRotate.js"></script>
+<script src="js/report.js?version=20220603"></script>
+<script src="js/lucky.js?version=20220603"></script>
+<script src="js/bling.js?version=20220603"></script>
+<script>
+    $(document).ready(()=>{
+        let date = moment().format("MM-DD");
+        if(date === '06-03') {
+            // 端午
+            document.getElementById('lucky-tip').style.display='inline-block';
+            setInterval("changeColor('lucky-tip')",200);
+        }
+
+    });
+
+    function lucky() {
+        document.getElementById('id02').style.display='block';
+        document.getElementById('wheel-audio').play();
+    }
+
+    function luckyClose() {
+        document.getElementById('id02').style.display='none';
+        document.getElementById('wheel-audio').pause();
+    }
+
+</script>
+
+</body>
+</html>
