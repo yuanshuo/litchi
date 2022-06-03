@@ -105,7 +105,7 @@
                     <canvas class="item" id="wheelCanvas" width="844px" height="844px"></canvas>
                 </div>
                 <img class="pointer" src="./img/wheel-pointer.png" />
-                <span onclick="luckyClose();" class="w3-button w3-circle w3-text-black wheel-close">X</span>
+                <div class="wheel-close"><span onclick="luckyClose();" class="w3-button w3-circle w3-text-black">X</span></div>
                 <audio id="wheel-audio">
                     <source src="./audio/seve_lucky.m4a" type="audio/mpeg">
                     Your browser does not support the audio element.
@@ -135,10 +135,10 @@
             document.getElementById('lucky-tip').style.display='inline-block';
             setInterval("changeColor('lucky-tip')",200);
         }
-
     });
 
     function lucky() {
+        drawWheelCanvas();
         document.getElementById('id02').style.display='block';
         document.getElementById('wheel-audio').play();
     }

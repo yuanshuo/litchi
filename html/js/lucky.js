@@ -36,9 +36,7 @@ var imgUrl5 = new Image();
 imgUrl5.src = turnWheel.rewardUrl[4];
 var imgUrl6 = new Image();
 imgUrl6.src = turnWheel.rewardUrl[5];
-window.onload = function() {
-    drawWheelCanvas();
-};
+
 
 /**
  *
@@ -57,8 +55,8 @@ var rotateFunc = function (item, tip,count){
     // 哪个标签调用方法，旋转哪个控件
     $('#wheelCanvas').rotate({
         angle:0,
-        animateTo:angles + 360 * 5, // 这里多旋转了5圈，圈数越多，转的越快
-        duration:8000,
+        animateTo:angles + 360 * 30, // 这里多旋转了5圈，圈数越多，转的越快
+        duration:30000,
         callback:function (){ // 回调方法
             document.getElementById('wheel-tip').innerHTML = (tip==='谢谢参与'? '谢谢参与' : '恭喜抽中：' + tip);
             turnWheel.bRotate = !turnWheel.bRotate;
@@ -93,7 +91,7 @@ function drawWheelCanvas() {
     ctx.clearRect(0,0,canvasW,canvasH);//去掉背景默认的黑色
     console.log(canvasW);
     ctx.strokeStyle = "#199301"; //线的颜色
-    ctx.font = '26px Microsoft YaHei';
+    ctx.font = '30px STHeiti-Light';
     //ctx.closePath();
     //使用了beginPath(),canvas会知道是重新画一条，如果给这几条设置不同的属性也是可以的。
     for(var index = 0; index < turnWheel.rewardNames.length; index++) {
@@ -116,7 +114,7 @@ function drawWheelCanvas() {
         //ctx.drawImage(imgUrl1, -15, 10);
         ctx.fillText(rewardName, -ctx.measureText(rewardName).width / 2, 100);
         //添加对应图标
-        if (index == 0) {
+        /*if (index == 0) {
             ctx.drawImage(imgUrl1, -35, 0, 60, 60);
         } else if (index == 1) {
             ctx.drawImage(imgUrl2, -35, 0, 60, 60);
@@ -128,7 +126,7 @@ function drawWheelCanvas() {
             ctx.drawImage(imgUrl5, -35, 0, 60, 60);
         } else {
             ctx.drawImage(imgUrl6, -35, 0, 60, 60);
-        }
+        }*/
         ctx.restore(); //很关键
     }
 }

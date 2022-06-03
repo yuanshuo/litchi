@@ -6,14 +6,9 @@
     background-size:100% 100%;
     margin: .3rem 0;
     position:relative;
-    top: 6rem;
+    top: 2rem;
 }
-.wheel-close {
-    position:relative;
-    top: 3rem;
-    left: 10.8rem;
-    background-color: white;
-}
+
 .wheel-tip {
     background-color: white;
     width: 70%;
@@ -22,22 +17,35 @@
 }
 .wheel{
     display:block;
-    /*width:25rem;*/
+    width:25rem;
     /*height:25rem;*/
     position:relative;
-    background-image:url(../img/wheel-bg.png);
-    background-size:100% 100%;
+    background:url(../img/wheel-bg.png) no-repeat left top;
+    background-size:25rem 25rem;
     margin: 0 auto;
 }
+.wheel-close {
+    position:relative;
+    display: block;
+    text-align: center;
+    top: -2rem;
+}
+.wheel-close span {
+    background-color: white;
+}
 img.pointer{
-    position:absolute;
+    position:relative;
+    display: table-cell;
     width: 6rem;
     height: 6.6rem;
-    left: 9.3rem;
-    top: 11.7rem;
+    /*left: 11rem;*/
+    top: -16rem;
+    margin: 0 auto;
 }
 #wheelCanvas{
     width:25rem;
     height:25rem;
+    position:relative;
+    margin: 0 auto;
 }
 /*抽奖大转盘结束*/
