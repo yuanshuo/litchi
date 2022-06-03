@@ -131,3 +131,10 @@ function drawWheelCanvas() {
     }
 }
 
+function changeBg(eleId) {
+    // 有性能问题
+    var bg = ['url("./img/wheel-bg-2.png")', 'url("./img/wheel-bg.png")'];
+    document.getElementById(eleId).style.backgroundImage = bg[index%2];
+    index ++;
+}
+

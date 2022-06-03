@@ -101,7 +101,7 @@
 
             <div class="ck-wheel">
                 <div class="wheel-tip w3-text-red"><h3 id="wheel-tip" >冲鸭！冲鸭！</h3></div>
-                <div class="wheel">
+                <div class="wheel" id="wheel">
                     <canvas class="item" id="wheelCanvas" width="844px" height="844px"></canvas>
                 </div>
                 <img class="pointer" src="./img/wheel-pointer.png" />
@@ -128,17 +128,21 @@
 <script src="js/lucky.js?version=20220603"></script>
 <script src="js/bling.js?version=20220603"></script>
 <script>
+    let index = 0;
     $(document).ready(()=>{
         let date = moment().format("MM-DD");
         if(date === '06-03') {
             // 端午
             document.getElementById('lucky-tip').style.display='inline-block';
             setInterval("changeColor('lucky-tip')",200);
+
+            // setInterval("changeBg('wheel', index)",1000);
         }
     });
 
     function lucky() {
         drawWheelCanvas();
+        document.getElementById('wheel-tip').innerHTML = '冲鸭！冲鸭！';
         document.getElementById('id02').style.display='block';
         document.getElementById('wheel-audio').play();
     }
