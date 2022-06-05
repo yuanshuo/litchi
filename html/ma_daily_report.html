@@ -106,7 +106,7 @@
                 </div>
                 <img class="pointer" src="./img/wheel-pointer.png" />
                 <div class="wheel-close"><span onclick="luckyClose();" class="w3-button w3-circle w3-text-black">X</span></div>
-                <audio id="wheel-audio">
+                <audio id="wheel-audio" loop="loop">
                     <source src="./audio/seve_lucky.m4a" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
@@ -125,13 +125,13 @@
 <script src="http://libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript" src="./frame/jQueryRotate.js"></script>
 <script src="js/report.js?version=20220605"></script>
-<script src="js/lucky.js?version=20220603"></script>
+<script src="js/lucky.js?version=20220605"></script>
 <script src="js/bling.js?version=20220603"></script>
 <script>
     let index = 0;
     $(document).ready(()=>{
         let date = moment().format("MM-DD");
-        if(date === '06-03') {
+        if(date === '06-03' || date === '06-04' || date === '06-05') {
             // 端午
             document.getElementById('lucky-tip').style.display='inline-block';
             setInterval("changeColor('lucky-tip')",200);

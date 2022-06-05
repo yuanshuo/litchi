@@ -9,8 +9,10 @@ var turnWheel = {
     textRadius: 320, //转盘奖品位置距离圆心的距离
     insideRadius: 68, //转盘内圆的半径
     startAngle: 0, //开始角度
-    bRotate: false //false:停止;ture:旋转
+    bRotate: false, //false:停止;ture:旋转
+    rewardChances:[] // 中奖概率
 };
+turnWheel.rewardChances = [50, 10, 10, 10, 10, 10];
 turnWheel.rewardNames = ["谢谢参与", "吃大餐", "大保健", "看电影", "卡拉OK", "打球"];
 //6个图片地址,需要自己写一下
 turnWheel.rewardUrl = ['', '', '', '', '', ''];
@@ -55,14 +57,45 @@ var rotateFunc = function (item, tip,count){
     // 哪个标签调用方法，旋转哪个控件
     $('#wheelCanvas').rotate({
         angle:0,
-        animateTo:angles + 360 * 30, // 这里多旋转了5圈，圈数越多，转的越快
-        duration:30000,
+        animateTo:angles + 360 * 10, // 这里多旋转了5圈，圈数越多，转的越快
+        duration:10000,
         callback:function (){ // 回调方法
             document.getElementById('wheel-tip').innerHTML = (tip==='谢谢参与'? '谢谢参与' : '恭喜抽中：' + tip);
             turnWheel.bRotate = !turnWheel.bRotate;
         }
     });
 };
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+/**
+ * 根据中奖概率选中中奖下标
+ * @param arr
+ * @returns {number}
+ */
+function percentChance(arr) {
+    var sum = 0;
+    arr.forEach(val=>{
+        sum+= val;
+    })
+    var percent = getRndInteger(0, sum);
+    console.log('random:' + percent);
+    var arrTemp = [];
+    for (i = 0; i < arr.length; i++) {
+        if (i === 0) {
+            arrTemp[i] = arr[i];
+        } else {
+            arrTemp[i] = arr[i] + arrTemp[i - 1];
+        }
+
+        if (arrTemp[i] >= percent) {
+            return i;
+        }
+    }
+}
+
 // 抽取按钮按钮点击触发事件
 $('.pointer').click(function (){
     // 正在转动，直接返回
@@ -72,12 +105,16 @@ $('.pointer').click(function (){
     var count = turnWheel.rewardNames.length;
 
     //抽奖
-    var item = 1;
-    turnWheel.prizeId.forEach(function(currentValue, index){
-        // 开始抽奖
-        document.getElementById('wheel-tip').innerHTML = '冲、冲、冲鸭！';
-        rotateFunc(item, turnWheel.rewardNames[item],count);
-    })
+    var index = percentChance(turnWheel.rewardChances);
+    var item = turnWheel.prizeId[index];
+
+    console.log('item:'+item);
+    // 开始抽奖
+    document.getElementById('wheel-tip').innerHTML = '冲、冲、冲鸭！';
+    rotateFunc(item, turnWheel.rewardNames[index], count);
+    // turnWheel.prizeId.forEach(function(currentValue, index){
+    //
+    // })
 
 });
 

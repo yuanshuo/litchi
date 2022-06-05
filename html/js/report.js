@@ -19,6 +19,25 @@ function numberSum(str) {
     return NaN;
 }
 
+function toFixed4(num) {
+    let res = num.toFixed(4);
+    let index = res.length - 1;
+    for (let i = res.length - 1; i >= 0; i--) {
+        if (res[i] !== '0') {
+            index = i;
+            break;
+        }
+    }
+    if (res[index] === '.') {
+        // 1.0000
+        res = res.substring(0, index)
+    } else {
+        // 1.0010
+        res = res.substring(0, index+1);
+    }
+    return res;
+}
+
 /**
  * 生成汇报内容
  */
@@ -157,17 +176,17 @@ function report() {
         let content = '【' + moment().format("MM月DD日") + '销售日报】\n' +
             '【当日】来电' + laidian + '组，来访' + laifang + '组，其中新访' + xinfang + '组（自然来访' + ziran + '组，自渠来访' + ziqu + '组，中介来访' + zhongjie + '组），再访' + zaifang + '组，业主' + yezhu + '组，参观' + canguan + '组。\n' +
             '当日来访客户中意向，合院' + heyuan + '组，叠墅' + dieshu + '组，洋房' + yangfang + '组，其他' + qita + '组。\n' +
-            '当日认购' + rengou + '套，金额' + rengoujine.toFixed(4) + '万；\n' +
-            '当日合同' + hetong + '套，合同金额' + hetongjine.toFixed(4) + '万元；\n' +
-            '当日回款' + huikuan.toFixed(4) + '万元。\n' +
+            '当日认购' + rengou + '套，金额' + toFixed4(rengoujine) + '万元；\n' +
+            '当日合同' + hetong + '套，合同金额' + toFixed4(hetongjine) + '万元；\n' +
+            '当日回款' + toFixed4(huikuan) + '万元。\n' +
             '【月度】\n' +
             '来电' + mlaidianReg + '组，来访' + mlaifangReg + '组（自然来访' + mziranReg + '组，自渠来访' + mziquReg + '组，中介来访' + mzhongjieReg + '组，再访' + mzaifangReg + '组）\n' +
-            '认购' + mrengouReg + '套，金额' + mrengouJineReg.toFixed(4) + '万；\n' +
-            '合同' + mhetongReg + '套，合同金额' + mhetongJineReg.toFixed(4) + '万元；\n' +
-            '回款' + mhuikuanReg.toFixed(4) + '万元。\n' +
+            '认购' + mrengouReg + '套，金额' + toFixed4(mrengouJineReg) + '万元；\n' +
+            '合同' + mhetongReg + '套，合同金额' + toFixed4(mhetongJineReg) + '万元；\n' +
+            '回款' + toFixed4(mhuikuanReg) + '万元。\n' +
             '【年度】\n' +
             '来电' + ylaidianReg + '组，来访客户' + ylaifangReg + '组。\n' +
-            '合同' + yhetongReg + '套，合同金额' + yhetongJineReg.toFixed(4) + '万元，回款' + yhuikuanReg.toFixed(4) + '万元。';
+            '合同' + yhetongReg + '套，合同金额' + toFixed4(yhetongJineReg) + '万元，回款' + toFixed4(yhuikuanReg) + '万元。';
 
         document.getElementById('new').value = content;
         return;
@@ -178,17 +197,17 @@ function report() {
     if(jituan) {
         let content2 = '【' + moment().format("MM月DD日") + '销售日报】\n' +
             '【当日】来电' + laidian + '组，来访' + laifang + '组，其中新访' + xinfang + '组（自然来访' + ziran + '组，渠道来访' + qudao + '组），再访' + zaifang + '组，业主' + yezhu + '组，参观' + canguan + '组。\n' +
-            '当日认购' + rengou + '套，金额' + rengoujine.toFixed(4) + '万；\n' +
-            '当日合同' + hetong + '套，合同金额' + hetongjine.toFixed(4) + '万元；\n' +
+            '当日认购' + rengou + '套，金额' + toFixed4(rengoujine) + '万元；\n' +
+            '当日合同' + hetong + '套，合同金额' + toFixed4(hetongjine) + '万元；\n' +
             '当日回款' + huikuan.toFixed(4) + '万元。\n' +
             '【月度】\n' +
             '来电' + mlaidianReg + '组，来访' + mlaifangReg + '组（自然来访' + mziranReg + '组，渠道来访' + mqudaoReg + '组，再访' + mzaifangReg + '组）\n' +
-            '认购' + mrengouReg + '套，金额' + mrengouJineReg.toFixed(4) + '万；\n' +
-            '合同' + mhetongReg + '套，合同金额' + mhetongJineReg.toFixed(4) + '万元；\n' +
-            '回款' + mhuikuanReg.toFixed(4) + '万元。\n' +
+            '认购' + mrengouReg + '套，金额' + toFixed4(mrengouJineReg) + '万元；\n' +
+            '合同' + mhetongReg + '套，合同金额' + toFixed4(mhetongJineReg) + '万元；\n' +
+            '回款' + toFixed4(mhuikuanReg) + '万元。\n' +
             '【年度】\n' +
             '来电' + ylaidianReg + '组，来访客户' + ylaifangReg + '组。\n' +
-            '合同' + yhetongReg + '套，合同金额' + yhetongJineReg.toFixed(4) + '万元，回款' + yhuikuanReg.toFixed(4) + '万元。';
+            '合同' + yhetongReg + '套，合同金额' + toFixed4(yhetongJineReg) + '万元，回款' + toFixed4(yhuikuanReg) + '万元。';
 
         document.getElementById('new').value = content2;
     }
