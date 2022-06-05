@@ -73,7 +73,7 @@ function report() {
     // 月度
     console.log('月度');
     let monthStart = false;
-    if (moment().date() === 3) {
+    if (moment().date() === 1) {
         monthStart = true;
     }
     month.match(laidianReg);
@@ -182,7 +182,7 @@ function report() {
             '当日合同' + hetong + '套，合同金额' + hetongjine.toFixed(4) + '万元；\n' +
             '当日回款' + huikuan.toFixed(4) + '万元。\n' +
             '【月度】\n' +
-            '来电' + mlaifangReg + '组，来访' + mlaifangReg + '组（自然来访' + mziranReg + '组，渠道来访' + mqudaoReg + '组，再访' + mzaifangReg + '组）\n' +
+            '来电' + mlaidianReg + '组，来访' + mlaifangReg + '组（自然来访' + mziranReg + '组，渠道来访' + mqudaoReg + '组，再访' + mzaifangReg + '组）\n' +
             '认购' + mrengouReg + '套，金额' + mrengouJineReg.toFixed(4) + '万；\n' +
             '合同' + mhetongReg + '套，合同金额' + mhetongJineReg.toFixed(4) + '万元；\n' +
             '回款' + mhuikuanReg.toFixed(4) + '万元。\n' +
