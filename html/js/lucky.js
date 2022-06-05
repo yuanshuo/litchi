@@ -57,8 +57,8 @@ var rotateFunc = function (item, tip,count){
     // 哪个标签调用方法，旋转哪个控件
     $('#wheelCanvas').rotate({
         angle:0,
-        animateTo:angles + 360 * 10, // 这里多旋转了5圈，圈数越多，转的越快
-        duration:10000,
+        animateTo:angles + 360 * 30, // 这里多旋转了5圈，圈数越多，转的越快
+        duration:30000,
         callback:function (){ // 回调方法
             document.getElementById('wheel-tip').innerHTML = (tip==='谢谢参与'? '谢谢参与' : '恭喜抽中：' + tip);
             turnWheel.bRotate = !turnWheel.bRotate;
