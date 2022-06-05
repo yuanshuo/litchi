@@ -199,7 +199,7 @@ function report() {
             '【当日】来电' + laidian + '组，来访' + laifang + '组，其中新访' + xinfang + '组（自然来访' + ziran + '组，渠道来访' + qudao + '组），再访' + zaifang + '组，业主' + yezhu + '组，参观' + canguan + '组。\n' +
             '当日认购' + rengou + '套，金额' + toFixed4(rengoujine) + '万元；\n' +
             '当日合同' + hetong + '套，合同金额' + toFixed4(hetongjine) + '万元；\n' +
-            '当日回款' + huikuan.toFixed(4) + '万元。\n' +
+            '当日回款' + toFixed4(huikuan) + '万元。\n' +
             '【月度】\n' +
             '来电' + mlaidianReg + '组，来访' + mlaifangReg + '组（自然来访' + mziranReg + '组，渠道来访' + mqudaoReg + '组，再访' + mzaifangReg + '组）\n' +
             '认购' + mrengouReg + '套，金额' + toFixed4(mrengouJineReg) + '万元；\n' +
