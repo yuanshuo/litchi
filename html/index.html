@@ -82,7 +82,7 @@
         <input class="w3-input" type="text" id="huikuan" placeholder="支持+运算"/>
 
         <button class="w3-button w3-black" type="button" onclick="report()">点我生成汇报内容</button>
-        <span id="lucky-tip" style="display: none" onclick="lucky();">端午抽大奖!!!</span>
+        <span id="lucky-tip" style="display: none" onclick="lucky();">周末大放送!!!</span>
 
         <p></p>
         <label>今日汇报内容：</label>
@@ -130,9 +130,9 @@
 <script>
     let index = 0;
     $(document).ready(()=>{
-        let date = moment().format("MM-DD");
-        if(date === '06-03' || date === '06-04' || date === '06-05') {
-            // 端午
+        let date = moment().isoWeekday();
+        if(date === 6 || date === 7) {
+            document.getElementById('lucky-tip').innerText = '周末大放送！！！';
             document.getElementById('lucky-tip').style.display='inline-block';
             setInterval("changeColor('lucky-tip')",200);
 
