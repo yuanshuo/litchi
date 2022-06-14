@@ -50,6 +50,12 @@ function report() {
         return;
     }
 
+    // 按钮特效
+    $('#reportBtn').addClass('animated rubberBand');
+    setTimeout(function(){
+        $('#reportBtn').removeClass('rubberBand');
+    }, 1000);
+
     let old = document.getElementById('old').value;
     let month = old.substring(old.indexOf('月度'), old.indexOf('年度'));
     let year = old.substring(old.indexOf('年度'));
