@@ -38,6 +38,10 @@ function toFixed4(num) {
     return res;
 }
 
+function getRndInteger2(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 /**
  * 生成汇报内容
  */
@@ -51,9 +55,11 @@ function report() {
     }
 
     // 按钮特效
-    $('#reportBtn').addClass('animated rubberBand');
+    let animates = ['rubberBand', 'bounce', 'flash', 'pulse', 'shake', 'swing', 'tada', 'wobble'];
+    // let index = getRndInteger2(0, 7);
+    $('#reportBtn').addClass('animated '+ animates[0]);
     setTimeout(function(){
-        $('#reportBtn').removeClass('rubberBand');
+        $('#reportBtn').removeClass(animates[0]);
     }, 1000);
 
     let old = document.getElementById('old').value;
