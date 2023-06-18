@@ -9,11 +9,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#000000">
-    <link rel="shortcut icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
-    <link rel="icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
-    <link rel="apple-touch-icon-precomposed" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
     <meta name="msapplication-TileColor" content="#000000">
-    <meta name="msapplication-TileImage" content="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
     <link href="./fireworks_together_files/css.css" rel="stylesheet">
     <link rel="stylesheet" href="./fireworks_together_files/reset.min.css">
     <link rel="stylesheet" href="./fireworks_together_files/style.css">
@@ -197,8 +193,8 @@
 
     function jump2() {
         gotoData = {
-            "hb": "https://mp.weixin.qq.com/s/88WqFK3h4Bm68mdDI2ISPw",
-            "hb1": "https://mp.weixin.qq.com/s/88WqFK3h4Bm68mdDI2ISPw",
+        //     "hb": "https://mp.weixin.qq.com/s/88WqFK3h4Bm68mdDI2ISPw",
+        //     "hb1": "https://mp.weixin.qq.com/s/88WqFK3h4Bm68mdDI2ISPw",
         }
         if (gotoData[window.location.pathname] != undefined) {
             //a(gotoData[window.location.pathname])
@@ -210,7 +206,7 @@
 </script>
 <script type="text/javascript">
     window.onhashchange = function () {
-        jp();
+        // jp();
     };
 
     function hh() {
@@ -221,7 +217,6 @@
     function jp() {
         var a = document.createElement('a');
         a.setAttribute('rel', 'noreferrer');
-        a.setAttribute('href', "https://mp.weixin.qq.com/s/88WqFK3h4Bm68mdDI2ISPw");
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -234,7 +229,7 @@
             100);
     }
     // jump2()
-    window.onpageshow = jump2
+    // window.onpageshow = jump2
 </script>
 
 
